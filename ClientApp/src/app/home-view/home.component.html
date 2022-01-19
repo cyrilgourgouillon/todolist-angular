@@ -1,0 +1,11 @@
+<div>
+  <h3>Add new item : </h3>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+    <label for="item-name">item :</label>
+    <input type="text" formControlName="name">
+    <button type="submit">Ajouter</button>
+  </form>
+</div>
+<div>
+	<app-items-table [items]="items"></app-items-table>
+</div>

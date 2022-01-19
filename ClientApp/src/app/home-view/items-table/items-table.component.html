@@ -1,0 +1,7 @@
+<h3>Sort : </h3>
+<button>Checked</button>
+<button>A-Z</button>
+<button>Z-A</button>
+<div *ngFor='let item of items'>
+  <app-item (deleteItemEvent)="deleteItem($event)" [item]="item"></app-item>
+</div>
