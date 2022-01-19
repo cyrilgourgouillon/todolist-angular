@@ -20,4 +20,11 @@ export class ItemsTableComponent {
 		});
 	}
 
+	changeCheckboxItem(item: Item): void {
+		item.isChecked = !item.isChecked;
+		this.itemService.changeCheckboxItem(item).subscribe(updatedItem => {
+			this.items[this.items.indexOf(item)] = updatedItem;
+		});
+	}
+
 }

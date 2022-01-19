@@ -8,10 +8,15 @@ import { Item } from 'src/app/Item';
 export class ItemComponent implements OnInit {
 	@Input() item: Item;
 	@Output() deleteItemEvent = new EventEmitter<Item>();
+	@Output() changeCheckboxItemEvent = new EventEmitter<Item>();
 
 	constructor() { }
 
 	ngOnInit() {
+	}
+
+	changeCheckboxItem(item: Item) {
+		this.changeCheckboxItemEvent.emit(item);
 	}
 
 	deleteItem(item: Item) {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5/+gagWuxzrPPK12REHJCm0tr1dWeZKQaMftj7sCIKx2R9rD7Yg0mODDoOMllUHq0dhlhfkdpbyqNJetNQ6/aw==",
+  "dgSpecHash": "OJR8q7pDkqZsnpwIYXwlV/mfNBiez5CaHfT1QXKAVlx9r0H/IwE8s7OakVMbeFRrO3SF93tp15LyltG3vc9jWA==",
   "success": true,
-  "projectFilePath": "/Users/cyrilg/Documents/GitHub/todolist-aspnet-angular/todolist-angular.csproj",
+  "projectFilePath": "/Users/cyrilg/Documents/GitHub/todolist-angular/todolist-angular.csproj",
   "expectedPackageFiles": [
     "/Users/cyrilg/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/Users/cyrilg/.nuget/packages/microsoft.aspnetcore.spaservices.extensions/5.0.13/microsoft.aspnetcore.spaservices.extensions.5.0.13.nupkg.sha512",

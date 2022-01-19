@@ -3,5 +3,5 @@
 <button>A-Z</button>
 <button>Z-A</button>
 <div *ngFor='let item of items'>
-  <app-item (deleteItemEvent)="deleteItem($event)" [item]="item"></app-item>
+  <app-item [item]="item" (deleteItemEvent)="deleteItem($event)" (changeCheckboxItemEvent)="changeCheckboxItem($event)"></app-item>
 </div>

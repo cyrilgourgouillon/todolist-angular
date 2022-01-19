@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/cyrilg/Documents/GitHub/todolist-aspnet-angular/todolist-angular.csproj": {}
+    "/Users/cyrilg/Documents/GitHub/todolist-angular/todolist-angular.csproj": {}
   },
   "projects": {
-    "/Users/cyrilg/Documents/GitHub/todolist-aspnet-angular/todolist-angular.csproj": {
+    "/Users/cyrilg/Documents/GitHub/todolist-angular/todolist-angular.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/cyrilg/Documents/GitHub/todolist-aspnet-angular/todolist-angular.csproj",
+        "projectUniqueName": "/Users/cyrilg/Documents/GitHub/todolist-angular/todolist-angular.csproj",
         "projectName": "todolist-angular",
-        "projectPath": "/Users/cyrilg/Documents/GitHub/todolist-aspnet-angular/todolist-angular.csproj",
+        "projectPath": "/Users/cyrilg/Documents/GitHub/todolist-angular/todolist-angular.csproj",
         "packagesPath": "/Users/cyrilg/.nuget/packages/",
-        "outputPath": "/Users/cyrilg/Documents/GitHub/todolist-aspnet-angular/obj/",
+        "outputPath": "/Users/cyrilg/Documents/GitHub/todolist-angular/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/cyrilg/.nuget/NuGet/NuGet.Config"
