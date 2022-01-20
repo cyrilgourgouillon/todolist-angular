@@ -22,6 +22,10 @@ export class ItemService {
 		return this.http.get<Item[]>(this.itemApiUrl);
 	}
 
+	getItem(id: Item['id']): Observable<Item> {
+		return this.http.get<Item>(`${this.itemApiUrl}/${id}`);
+	}
+
 	addItem(item: Item): Observable<Item> {
 		return this.http.post<Item>(this.itemApiUrl, item, this.httpOptions);
 	}

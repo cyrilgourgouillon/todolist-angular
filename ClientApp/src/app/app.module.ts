@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home-view/home.component';
 import { ItemComponent } from './home-view/item/item.component';
 import { ItemsTableComponent } from './home-view/items-table/items-table.component';
+import { ItemDetailsComponent } from './item-details/item-details.component';
 
 @NgModule({
 	imports: [
@@ -17,13 +18,15 @@ import { ItemsTableComponent } from './home-view/items-table/items-table.compone
 		ReactiveFormsModule,
 		RouterModule.forRoot([
 			{ path: '', component: HomeComponent, pathMatch: 'full' },
+			{ path: 'detail/:id', component: ItemDetailsComponent },
 		])
 	],
 	declarations: [
 		AppComponent,
 		HomeComponent,
 		ItemComponent,
-		ItemsTableComponent
+		ItemsTableComponent,
+		ItemDetailsComponent
 	],
 	providers: [],
 	bootstrap: [AppComponent]

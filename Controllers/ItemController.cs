@@ -23,9 +23,9 @@ namespace todolist_angular.Controllers
 		}
 
 		[HttpGet("{id}")]
-		public IEnumerable<Item> Get(int id)
+		public Item Get(int id)
 		{
-			return _itemContext.Items.Where(o => o.Id == id);
+			return _itemContext.Items.Where(o => o.Id == id).First();
 		}
 
 		[HttpPost]
@@ -39,7 +39,6 @@ namespace todolist_angular.Controllers
 		[HttpPut("{id}")]
 		public Item Put(int id,[FromBody] Item item)
 		{
-			Console.WriteLine("{0} - {1}", id, item.ToString());
 			var itemToPut = _itemContext.Items.Where(o => o.Id == id).First();
 			itemToPut.Name = item.Name;
 			itemToPut.IsChecked = item.IsChecked;
