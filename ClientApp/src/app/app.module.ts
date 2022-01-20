@@ -18,7 +18,7 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
 		ReactiveFormsModule,
 		RouterModule.forRoot([
 			{ path: '', component: HomeComponent, pathMatch: 'full' },
-			{ path: 'detail/:id', component: ItemDetailsComponent },
+			{ path: 'item/:id', component: ItemDetailsComponent },
 		])
 	],
 	declarations: [

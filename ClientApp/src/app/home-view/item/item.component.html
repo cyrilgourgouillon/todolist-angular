@@ -1,5 +1,5 @@
 <div>
   <input type="checkbox" [checked]='item.isChecked' (change)="changeCheckboxItem(item)">
-  <span routerLink="/detail/{{item.id}}">{{ item.name }}</span>
+  <span routerLink="/item/{{item.id}}">{{ item.id }} - {{ item.name }}</span>
   <button (click)="deleteItem(item)">x</button>
 </div>

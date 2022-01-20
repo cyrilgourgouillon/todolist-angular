@@ -1,6 +1,5 @@
 <h3>List of items</h3>
-<button (click)="sortByChecked()">Checked</button>
-<button (click)="sortByName()">A-Z</button>
+<button (click)="sortButtonEvent()" value="A-Z" #sortButton>Unsorted</button>
 <div *ngFor='let item of items'>
   <app-item [item]="item" (deleteItemEvent)="deleteItem($event)" (changeCheckboxItemEvent)="changeCheckboxItem($event)"></app-item>
 </div>

@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.getHeroes();
+		this.getItems();
 	}
 
 	onSubmit(formData: FormGroup): FormGroup {
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
 		});
 	}
 
-	getHeroes(): void {
+	getItems(): void {
 		this.itemService.getItems().subscribe(items => this.items = items);
 	}
 }
