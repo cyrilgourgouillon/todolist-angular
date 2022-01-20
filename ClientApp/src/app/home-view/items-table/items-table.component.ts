@@ -14,6 +14,38 @@ export class ItemsTableComponent {
 	) {
 	}
 
+	sortByChecked() {
+		this.items.sort(this.compareByCheck);
+	}
+
+	private compareByCheck(a, b): number {
+		if (a.isChecked && !b.isChecked) {
+			return 1;
+		}
+		if (!a.isChecked && b.isChecked) {
+			return -1;
+		}
+		if (a.isChecked && b.isChecked) {
+			return 0;
+		}
+	}
+
+	sortByName() {
+		this.items.sort(this.compareByName);
+	}
+
+	private compareByName(a, b) {
+		if (a.name > b.name) {
+			return 1;
+		}
+		if (a.name < b.name) {
+			return -1;
+		}
+		if (a.name = b.name) {
+			return 0;
+		}
+	}
+
 	deleteItem(item: Item): void {
 		this.itemService.deleteItem(item).subscribe(() => {
 			this.items.splice(this.items.indexOf(item) , 1);
