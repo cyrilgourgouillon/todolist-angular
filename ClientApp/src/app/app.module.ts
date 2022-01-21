@@ -26,7 +26,7 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
 		HomeComponent,
 		ItemComponent,
 		ItemsTableComponent,
-		ItemDetailsComponent
+		ItemDetailsComponent,
 	],
 	providers: [],
 	bootstrap: [AppComponent]
