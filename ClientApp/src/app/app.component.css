@@ -1,5 +1,5 @@
 body {
-  background-color: #fffcfa;
+  background-color: #fff;
   font-family: "Lato", sans-serif;
 }
 
@@ -15,7 +15,9 @@ body {
 .sidebar {
   flex-basis: 20vw;
   flex-grow: 1;
-  background-color: burlywood;
+  border-right: 3px solid black;
+  padding: 5px;
+  font-size: 15px;
 }
 
 .content {

@@ -1,11 +1,13 @@
+<app-white-space></app-white-space>
 <div>
-  <h3>Add new item</h3>
+  <app-title text="Add an item"></app-title>
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
-    <label for="item-name">item :</label>
     <input type="text" formControlName="name">
-    <button type="submit">Ajouter</button>
+    <button type="submit"><fa-icon [icon]="faPlus"></fa-icon></button>
   </form>
 </div>
+<app-white-space></app-white-space>
 <div>
+  <app-title text="List of item"></app-title>
 	<app-items-table [items]="items"></app-items-table>
 </div>

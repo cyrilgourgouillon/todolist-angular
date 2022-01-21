@@ -10,6 +10,8 @@ import { ItemComponent } from './home-view/item/item.component';
 import { ItemsTableComponent } from './home-view/items-table/items-table.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TitleComponent } from './title/title.component';
+import { WhiteSpaceComponent } from './white-space/white-space.component';
 
 @NgModule({
 	imports: [
@@ -28,6 +30,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 		ItemComponent,
 		ItemsTableComponent,
 		ItemDetailsComponent,
+		TitleComponent,
+		WhiteSpaceComponent,
 	],
 	providers: [],
 	bootstrap: [AppComponent]

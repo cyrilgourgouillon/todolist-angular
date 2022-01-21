@@ -1,6 +1,6 @@
 import { ItemService } from './../service/item.service';
 import { Item } from './../Item';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, DoCheck, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Location } from '@angular/common';
@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
 	selector: 'app-item-details',
 	templateUrl: './item-details.component.html',
 })
-export class ItemDetailsComponent implements OnInit {
+export class ItemDetailsComponent implements DoCheck {
 	@Input() item: Item;
 
 	constructor(
@@ -18,7 +18,7 @@ export class ItemDetailsComponent implements OnInit {
 		private location: Location
 	) { }
 
-	ngOnInit() {
+	ngDoCheck(): void {
 		this.getItem();
 	}
 

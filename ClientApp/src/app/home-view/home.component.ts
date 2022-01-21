@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Item } from '../Item';
 import { ItemService } from '../service/item.service';
+
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
@@ -9,6 +12,8 @@ import { ItemService } from '../service/item.service';
 export class HomeComponent implements OnInit {
 	formGroup: FormGroup;
 	items: Item[];
+
+  faPlus = faPlus;
 
 	constructor(
 		private formBuilder: FormBuilder,
