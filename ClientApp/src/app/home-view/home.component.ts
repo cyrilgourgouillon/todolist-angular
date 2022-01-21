@@ -8,12 +8,13 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
+	styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
 	formGroup: FormGroup;
 	items: Item[];
 
-  faPlus = faPlus;
+	faPlus = faPlus;
 
 	constructor(
 		private formBuilder: FormBuilder,

@@ -11,6 +11,7 @@ enum sortType {
 @Component({
 	selector: 'app-items-table',
 	templateUrl: './items-table.component.html',
+	styleUrls: ['./items-table.component.css'],
 })
 export class ItemsTableComponent implements DoCheck, OnInit {
 	@Input() items: Item[];

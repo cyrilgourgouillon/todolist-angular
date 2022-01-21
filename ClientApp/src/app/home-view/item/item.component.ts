@@ -4,7 +4,8 @@ import { Item } from 'src/app/Item';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 @Component({
 	selector: 'app-item',
-	templateUrl: './item.component.html'
+	templateUrl: './item.component.html',
+	styleUrls: ['./item.component.css'],
 })
 export class ItemComponent implements OnInit {
 	@Input() item: Item;

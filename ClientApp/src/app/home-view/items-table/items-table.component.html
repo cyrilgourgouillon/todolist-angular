@@ -1,4 +1,5 @@
-<button (click)="sortButtonEvent()" value="A-Z" #sortButton>Unsorted</button>
+<button class="sort-btn" (click)="sortButtonEvent()" value="A-Z" #sortButton>Unsorted</button>
+<div style="margin-bottom: 10px;"></div>
 <div *ngFor='let item of items'>
   <app-item [item]="item" (deleteItemEvent)="deleteItem($event)" (changeCheckboxItemEvent)="changeCheckboxItem($event)"></app-item>
 </div>

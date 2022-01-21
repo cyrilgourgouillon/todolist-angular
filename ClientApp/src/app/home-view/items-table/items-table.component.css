@@ -1,0 +1,8 @@
+.sort-btn {
+  border: 3px solid black;
+  height: 30px;
+  width: 120px;
+  background-color: white;
+  font-weight: bold;
+  font-style: italic;
+}

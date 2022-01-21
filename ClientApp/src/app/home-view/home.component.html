@@ -1,13 +1,14 @@
-<app-white-space></app-white-space>
-<div>
+<div style="margin: 10px;">
   <app-title text="Add an item"></app-title>
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
-    <input type="text" formControlName="name">
-    <button type="submit"><fa-icon [icon]="faPlus"></fa-icon></button>
+    <div class="input-group">
+      <input type="text" formControlName="name">
+      <button type="submit" class="plus-btn"><fa-icon [icon]="faPlus"></fa-icon></button>
+    </div>
   </form>
 </div>
 <app-white-space></app-white-space>
-<div>
+<div style="margin: 10px;">
   <app-title text="List of item"></app-title>
 	<app-items-table [items]="items"></app-items-table>
 </div>

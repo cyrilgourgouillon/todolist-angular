@@ -1,6 +1,7 @@
 body {
   background-color: #fff;
   font-family: "Lato", sans-serif;
+  padding: 0;
 }
 
 .container {
@@ -13,10 +14,9 @@ body {
 }
 
 .sidebar {
-  flex-basis: 20vw;
+  flex-basis: 300px;
   flex-grow: 1;
   border-right: 3px solid black;
-  padding: 5px;
   font-size: 15px;
 }
 

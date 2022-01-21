@@ -12,6 +12,7 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TitleComponent } from './title/title.component';
 import { WhiteSpaceComponent } from './white-space/white-space.component';
+import { BoxComponent } from './box/box.component';
 
 @NgModule({
 	imports: [
@@ -32,6 +33,7 @@ import { WhiteSpaceComponent } from './white-space/white-space.component';
 		ItemDetailsComponent,
 		TitleComponent,
 		WhiteSpaceComponent,
+		BoxComponent,
 	],
 	providers: [],
 	bootstrap: [AppComponent]

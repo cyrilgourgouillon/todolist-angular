@@ -8,6 +8,7 @@ import { Location } from '@angular/common';
 @Component({
 	selector: 'app-item-details',
 	templateUrl: './item-details.component.html',
+	styleUrls: ['./item-details.component.css'],
 })
 export class ItemDetailsComponent implements DoCheck {
 	@Input() item: Item;
