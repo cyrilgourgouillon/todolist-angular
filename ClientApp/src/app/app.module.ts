@@ -9,6 +9,7 @@ import { HomeComponent } from './home-view/home.component';
 import { ItemComponent } from './home-view/item/item.component';
 import { ItemsTableComponent } from './home-view/items-table/items-table.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
 	imports: [
@@ -17,9 +18,9 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
 		FormsModule,
 		ReactiveFormsModule,
 		RouterModule.forRoot([
-			{ path: '', component: HomeComponent, pathMatch: 'full' },
 			{ path: 'item/:id', component: ItemDetailsComponent },
-		])
+		]),
+		FontAwesomeModule
 	],
 	declarations: [
 		AppComponent,
