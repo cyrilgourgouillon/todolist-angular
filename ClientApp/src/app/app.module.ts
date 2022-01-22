@@ -11,7 +11,7 @@ import { ItemsTableComponent } from './sidebar/items-table/items-table.component
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TitleComponent } from './tools/title.component';
-import { WhiteSpaceComponent } from './tools/white-space.component';
+import { SeparatorComponent } from './tools/separator.component';
 
 @NgModule({
 	imports: [
@@ -31,7 +31,7 @@ import { WhiteSpaceComponent } from './tools/white-space.component';
 		ItemsTableComponent,
 		ItemDetailsComponent,
 		TitleComponent,
-		WhiteSpaceComponent,
+		SeparatorComponent,
 	],
 	providers: [],
 	bootstrap: [AppComponent]

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-	selector: 'app-white-space',
+	selector: 'app-separator',
 	template: '<div class="white-space"></div>',
 	styles: ['.white-space {width: 100%; padding-top: 10px; margin-bottom: 20px; border-bottom: 3px solid black}']
 })
-export class WhiteSpaceComponent {
+export class SeparatorComponent {
 
 }
