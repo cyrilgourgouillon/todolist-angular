@@ -5,14 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home-view/home.component';
-import { ItemComponent } from './home-view/item/item.component';
-import { ItemsTableComponent } from './home-view/items-table/items-table.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ItemComponent } from './sidebar/item/item.component';
+import { ItemsTableComponent } from './sidebar/items-table/items-table.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { TitleComponent } from './title/title.component';
-import { WhiteSpaceComponent } from './white-space/white-space.component';
-import { BoxComponent } from './box/box.component';
+import { TitleComponent } from './tools/title.component';
+import { WhiteSpaceComponent } from './tools/white-space.component';
 
 @NgModule({
 	imports: [
@@ -27,13 +26,12 @@ import { BoxComponent } from './box/box.component';
 	],
 	declarations: [
 		AppComponent,
-		HomeComponent,
+		SidebarComponent,
 		ItemComponent,
 		ItemsTableComponent,
 		ItemDetailsComponent,
 		TitleComponent,
 		WhiteSpaceComponent,
-		BoxComponent,
 	],
 	providers: [],
 	bootstrap: [AppComponent]

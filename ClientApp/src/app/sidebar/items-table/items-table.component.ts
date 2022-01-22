@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Item } from './../../Item';
+import { Item } from '../../Item';
 import { Component, DoCheck, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ItemService } from 'src/app/service/item.service';
 
