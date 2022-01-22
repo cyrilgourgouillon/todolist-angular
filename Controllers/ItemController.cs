@@ -25,7 +25,7 @@ namespace todolist_angular.Controllers
 		[HttpGet("{id}")]
 		public Item Get(int id)
 		{
-			return _itemContext.Items.Where(o => o.Id == id).First();
+			return _itemContext.Items.Where(o => o.Id == id).FirstOrDefault();
 		}
 
 		[HttpPost]
@@ -39,7 +39,7 @@ namespace todolist_angular.Controllers
 		[HttpPut("{id}")]
 		public Item Put(int id,[FromBody] Item item)
 		{
-			var itemToPut = _itemContext.Items.Where(o => o.Id == id).First();
+			var itemToPut = _itemContext.Items.Where(o => o.Id == id).FirstOrDefault();
 			itemToPut.Name = item.Name;
 			itemToPut.IsChecked = item.IsChecked;
 			_itemContext.SaveChanges();
@@ -49,7 +49,7 @@ namespace todolist_angular.Controllers
 		[HttpDelete("{id}")]
 		public int Delete(int id)
 		{
-			_itemContext.Items.Remove(_itemContext.Items.Where(o => o.Id == id).First());
+			_itemContext.Items.Remove(_itemContext.Items.Where(o => o.Id == id).FirstOrDefault());
 			_itemContext.SaveChanges();
 			return id;
 		}

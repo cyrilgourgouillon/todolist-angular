@@ -1,6 +1,6 @@
 import { ItemService } from './../service/item.service';
 import { Item } from './../Item';
-import { Component, DoCheck, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Location } from '@angular/common';
@@ -10,8 +10,8 @@ import { Location } from '@angular/common';
 	templateUrl: './item-details.component.html',
 	styleUrls: ['./item-details.component.css'],
 })
-export class ItemDetailsComponent implements DoCheck {
-	@Input() item: Item;
+export class ItemDetailsComponent implements OnInit {
+	@Input() item?: Item;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -19,16 +19,17 @@ export class ItemDetailsComponent implements DoCheck {
 		private location: Location
 	) { }
 
-	ngDoCheck(): void {
-		this.getItem();
+	ngOnInit(): void {
+		this.route.params.subscribe((routeParam) => {
+			this.getItem(routeParam.id);
+		});
 	}
 
 	goBack(): void {
 		this.location.back();
 	}
 
-	getItem() {
-		const id = Number(this.route.snapshot.paramMap.get('id'));
+	getItem(id: Item['id']) {
 		this.itemService.getItem(id).subscribe(item => this.item = item);
 	}
 

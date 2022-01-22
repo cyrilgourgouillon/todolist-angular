@@ -1,5 +1,6 @@
+import { ActivatedRoute } from '@angular/router';
 import { Item } from './../../Item';
-import { Component, DoCheck, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, DoCheck, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ItemService } from 'src/app/service/item.service';
 
 enum sortType {
@@ -13,8 +14,8 @@ enum sortType {
 	templateUrl: './items-table.component.html',
 	styleUrls: ['./items-table.component.css'],
 })
-export class ItemsTableComponent implements DoCheck, OnInit {
-	@Input() items: Item[];
+export class ItemsTableComponent implements OnInit, OnChanges {
+	@Input() items?: Item[];
 
 	@ViewChild('sortButton', {static: true}) sortButtonElement: ElementRef;
 
@@ -22,6 +23,7 @@ export class ItemsTableComponent implements DoCheck, OnInit {
 
 	constructor(
 		private itemService: ItemService,
+		private route: ActivatedRoute,
 	) {
 		this.currentSort = sortType.UNSORTED;
 	}
@@ -30,7 +32,7 @@ export class ItemsTableComponent implements DoCheck, OnInit {
 		this.initSortButton();
 	}
 
-	ngDoCheck(): void {
+	ngOnChanges(): void {
 		if (this.items) {
 			this.sortByChecked();
 		}
@@ -46,10 +48,10 @@ export class ItemsTableComponent implements DoCheck, OnInit {
 	}
 
 	private compareByCheck(a: Item, b: Item): number {
-		if (a.isChecked > b.isChecked) {
+		if (a.isChecked < b.isChecked) {
 			return 1;
 		}
-		if (a.isChecked < b.isChecked) {
+		if (a.isChecked > b.isChecked) {
 			return -1;
 		}
 		return 0;
@@ -81,6 +83,8 @@ export class ItemsTableComponent implements DoCheck, OnInit {
 		if (this.currentSort === sortType.UNSORTED) {
 			this.items.sort(this.compareByNameNone);
 		}
+
+		this.items.sort(this.compareByCheck);
 	}
 
 	private compareByNameAscending(a: Item, b: Item): number {
@@ -98,6 +102,7 @@ export class ItemsTableComponent implements DoCheck, OnInit {
 	deleteItem(item: Item): void {
 		this.itemService.deleteItem(item).subscribe(() => {
 			this.items.splice(this.items.indexOf(item) , 1);
+			this.ngOnChanges();
 		});
 	}
 
@@ -105,6 +110,7 @@ export class ItemsTableComponent implements DoCheck, OnInit {
 		item.isChecked = !item.isChecked;
 		this.itemService.changeCheckboxItem(item).subscribe(updatedItem => {
 			this.items[this.items.indexOf(item)] = updatedItem;
+			this.ngOnChanges();
 		});
 	}
 
