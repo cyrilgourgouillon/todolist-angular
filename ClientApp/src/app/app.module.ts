@@ -12,6 +12,8 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TitleComponent } from './tools/title.component';
 import { SeparatorComponent } from './tools/separator.component';
+import { FavoriteButtonComponent } from './tools/favorite-button/favorite-button.component';
+import { DeleteButtonComponent } from './tools/delete-button/delete-button.component';
 
 @NgModule({
 	imports: [
@@ -32,6 +34,8 @@ import { SeparatorComponent } from './tools/separator.component';
 		ItemDetailsComponent,
 		TitleComponent,
 		SeparatorComponent,
+		FavoriteButtonComponent,
+		DeleteButtonComponent,
 	],
 	providers: [],
 	bootstrap: [AppComponent]
