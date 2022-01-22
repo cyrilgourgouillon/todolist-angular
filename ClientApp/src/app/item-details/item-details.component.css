@@ -1,5 +1,24 @@
 .container {
   margin-left: 50px;
-  margin-top: 10px;
+  margin-top: 50px;
   font-weight: 700;
+}
+
+input[type="checkbox"] {
+  background-color: #FFFFFF;
+  border: 3px solid black;
+  width: 20px;
+  height: 20px;
+  -webkit-appearance: none;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #ffed4b;
+  -webkit-appearance: none;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  gap: 1em;
 }

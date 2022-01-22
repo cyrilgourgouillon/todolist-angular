@@ -1,7 +1,7 @@
 .input-group {
   display: flex;
   align-items: center;
-  position: relative;
+  width: 100%;
 }
 
 .plus-btn {
@@ -11,7 +11,7 @@
   height: 30px;
   -webkit-appearance: none;
   right: 0px;
-  position: absolute;
+  flex-grow: 0;
 }
 
 input[type="text"] {
@@ -20,6 +20,7 @@ input[type="text"] {
   border-left: 3px solid black;
   border-bottom: 3px solid black;
   height: 30px;
-  width: 95%;
   outline: none;
+  flex-grow: 1;
+  border-right-style: hidden;
 }
