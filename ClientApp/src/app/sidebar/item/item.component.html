@@ -1,5 +1,7 @@
 <div class="item-container">
-  <input type="checkbox" [checked]='item.isChecked' (change)="changeCheckboxItem(item)">
+  <app-favorite-button [item]="item" (click)="changeCheckboxItem(item)"></app-favorite-button>
+  <app-delete-button (click)="deleteItem(item)"></app-delete-button>
+
+  <!--<input type="checkbox" [checked]='item.isChecked' (change)="changeCheckboxItem(item)">-->
   <span routerLink="/item/{{item.id}}">{{ item.name }}</span>
-  <button (click)="deleteItem(item)" class="delete-btn"><fa-icon [icon]="faTrash"></fa-icon></button>
 </div>

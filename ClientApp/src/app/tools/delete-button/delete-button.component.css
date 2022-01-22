@@ -1,0 +1,15 @@
+.delete-btn {
+  background-color: #ff7575;
+  border: 3px solid black;
+  width: 30px;
+  height: 30px;
+  -webkit-appearance: none;
+}
+
+.delete-btn:hover {
+  background-color: #c44e4e;
+}
+
+:host {
+  display: flex;
+}

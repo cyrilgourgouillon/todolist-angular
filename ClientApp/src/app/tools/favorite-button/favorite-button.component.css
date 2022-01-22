@@ -1,0 +1,16 @@
+input[type="checkbox"] {
+  background-color: #FFFFFF;
+  border: 3px solid black;
+  width: 30px;
+  height: 30px;
+  -webkit-appearance: none;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #ffed4b;
+  -webkit-appearance: none;
+}
+
+:host {
+  display: flex;
+}
