@@ -7,7 +7,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 	templateUrl: './item.component.html',
 	styleUrls: ['./item.component.css'],
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent {
 	@Input() item: Item;
 	@Output() deleteItemEvent = new EventEmitter<Item>();
 	@Output() changeCheckboxItemEvent = new EventEmitter<Item>();
@@ -15,9 +15,6 @@ export class ItemComponent implements OnInit {
 	faTrash = faTrash;
 
 	constructor() { }
-
-	ngOnInit() {
-	}
 
 	changeCheckboxItem(item: Item) {
 		this.changeCheckboxItemEvent.emit(item);

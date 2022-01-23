@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Item } from '../Item';
 import { ItemService } from '../service/item.service';
@@ -10,9 +10,9 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 	templateUrl: './sidebar.component.html',
 	styleUrls: ['./sidebar.component.css'],
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
+	@Input() items: Item[];
 	formGroup: FormGroup;
-	items: Item[];
 
 	faPlus = faPlus;
 
@@ -23,10 +23,6 @@ export class SidebarComponent implements OnInit {
 		this.formGroup = this.formBuilder.group({
 			name: '',
 		});
-	}
-
-	ngOnInit(): void {
-		this.getItems();
 	}
 
 	onSubmit(formData: FormGroup): FormGroup {
@@ -40,7 +36,4 @@ export class SidebarComponent implements OnInit {
 		});
 	}
 
-	getItems(): void {
-		this.itemService.getItems().subscribe(items => this.items = items);
-	}
 }
