@@ -28,7 +28,7 @@ export class SidebarComponent {
 	onSubmit(formData: FormGroup): FormGroup {
 		const name = formData['name'];
 		if (!name) { return; }
-		this.itemService.addItem({id: this.itemService.getNextAvailableIdFrom(this.items), name: name, isChecked: false})
+		this.itemService.addItem({id: this.itemService.getNextAvailableIdFrom(this.items), name: name, isChecked: false, content: ''})
 			.subscribe(item => this.items.push(item));
 
 		this.formGroup = this.formBuilder.group({
