@@ -1,6 +1,6 @@
 import { ItemService } from './../service/item.service';
 import { Item } from './../Item';
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, QueryList, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Location } from '@angular/common';
@@ -12,11 +12,11 @@ import { Location } from '@angular/common';
 })
 export class ItemDetailsComponent implements OnInit {
 	@Input() item?: Item;
+	@ViewChild('contentTextArea', {static: false}) contentTextArea: ElementRef;
 
 	constructor(
 		private route: ActivatedRoute,
 		private itemService: ItemService,
-		private location: Location
 	) { }
 
 	ngOnInit(): void {
@@ -25,12 +25,12 @@ export class ItemDetailsComponent implements OnInit {
 		});
 	}
 
-	goBack(): void {
-		this.location.back();
-	}
-
 	getItem(id: Item['id']) {
 		this.itemService.getItem(id).subscribe(item => this.item = item);
+	}
+
+	updateContent() {
+		console.log(this.contentTextArea.nativeElement.value);
 	}
 
 }

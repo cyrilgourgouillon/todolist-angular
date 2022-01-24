@@ -22,3 +22,12 @@ input[type="checkbox"]:checked {
   align-items: center;
   gap: 1em;
 }
+
+.content {
+  outline: none;
+  resize: none;
+  overflow: auto;
+  width: 100%;
+  height: 100Vh;
+  border: none;
+}

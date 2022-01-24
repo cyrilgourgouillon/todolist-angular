@@ -23,7 +23,6 @@ export class ItemsTableComponent implements OnInit, OnChanges {
 
 	constructor(
 		private itemService: ItemService,
-		private route: ActivatedRoute,
 	) {
 		this.currentSort = sortType.UNSORTED;
 	}

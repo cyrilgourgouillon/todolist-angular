@@ -21,7 +21,7 @@ namespace todolist_aspnet_angular.Models
 		public string Content { get; set; }
 
 		public override string ToString() {
-       		return string.Format("*********** {0} - {1} - {2}", Id, Name, IsChecked);
+       		return string.Format("{0} - {1} - {2}", Id, Name, IsChecked);
     	}
     }
 }
