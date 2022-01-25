@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
 	addItem(item: Item) {
 		this.itemService.addItem(item)
 		.subscribe(itemAdded => this.items.push(itemAdded));
+		this.router.navigateByUrl(`/item/${item.id}`);
 	}
 
 	deleteItem(item: Item): void {

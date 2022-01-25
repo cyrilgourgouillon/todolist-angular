@@ -41,6 +41,7 @@ export class ItemService {
 	}
 
 	updateItem(item: Item): Observable<Item> {
+		this.items[this.items.indexOf(item)] = item;
 		return this.http.put<Item>(`${this.itemApiUrl}/${item.id}`, item, this.httpOptions);
 	}
 

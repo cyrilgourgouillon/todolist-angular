@@ -29,13 +29,13 @@ export class SidebarComponent {
 	}
 
 	addItem(formData: FormGroup): FormGroup {
-    const name = formData['name'];
+		const name = formData['name'];
 		if (!name) { return; }
 
 		this.formGroup = this.formBuilder.group({
 			name: '',
 		});
-    this.addItemEvent.emit({id: this.itemService.getNextAvailableIdFrom(this.items), name: name, isChecked: false, content: ''});
+		this.addItemEvent.emit({id: this.itemService.getNextAvailableIdFrom(this.items), name: name, isChecked: false, content: ''});
 	}
 
 	deleteItem(item: Item) {
