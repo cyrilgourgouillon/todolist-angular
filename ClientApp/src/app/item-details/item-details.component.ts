@@ -13,7 +13,7 @@ import { debounce } from 'lodash';
 export class ItemDetailsComponent implements OnInit {
 	@Input() item?: Item;
 	@ViewChild('contentTextArea', {static: false}) contentTextArea: ElementRef;
-	savingState: 'Saving...' | 'Saved!' | '';
+	savingState: 'Saving...' | 'Saved!';
 
 	debouncedUpdateContent = debounce(() => {
 		this.updateContent();
@@ -25,6 +25,7 @@ export class ItemDetailsComponent implements OnInit {
 	) { }
 
 	ngOnInit(): void {
+		this.savingState = 'Saved!';
 		this.route.params.subscribe((routeParam) => {
 			this.getItem(routeParam.id);
 		});
@@ -40,9 +41,11 @@ export class ItemDetailsComponent implements OnInit {
 	}
 
 	updateContent() {
-		this.savingState = 'Saved!';
 		this.item.content = this.contentTextArea.nativeElement.value;
-		this.itemService.updateItem(this.item).subscribe((updatedItem) => { this.item = updatedItem; });
+		this.itemService.updateItem(this.item).subscribe((updatedItem) => {
+			this.item = updatedItem;
+			this.savingState = 'Saved!';
+		});
 	}
 
 }
