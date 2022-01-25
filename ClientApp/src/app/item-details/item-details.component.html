@@ -1,9 +1,9 @@
 <div class="container">
 	<div *ngIf="item">
 		<div class="title-container">
-			<h1>{{item.name}} </h1>
-			<input type="checkbox" [checked]='item.isChecked'>
-      <span style="color: #777">{{savingState}}</span>
+			<h1 class="title">{{item.name}} </h1>
+			<input class="checkbox" type="checkbox" [checked]='item.isChecked'>
+      <span class="saving-state" style="color: #777">{{savingState}}</span>
 		</div>
 		<app-separator></app-separator>
     <div>

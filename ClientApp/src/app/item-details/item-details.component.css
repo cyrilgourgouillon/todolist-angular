@@ -21,6 +21,24 @@ input[type="checkbox"]:checked {
   display: flex;
   align-items: center;
   gap: 1em;
+  flex-grow: 1;
+}
+
+.title {
+  flex-grow: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.checkbox {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.saving-state {
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 
 .content {

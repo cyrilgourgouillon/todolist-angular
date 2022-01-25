@@ -3,5 +3,5 @@
   <app-delete-button (click)="deleteItem(item)"></app-delete-button>
 
   <!--<input type="checkbox" [checked]='item.isChecked' (change)="changeCheckboxItem(item)">-->
-  <span routerLink="/item/{{item.id}}">{{ item.name }}</span>
+  <div class="item-name" routerLink="/item/{{item.id}}">{{ item.name }}</div>
 </div>
