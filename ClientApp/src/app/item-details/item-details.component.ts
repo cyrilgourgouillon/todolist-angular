@@ -13,11 +13,17 @@ import { debounce } from 'lodash';
 export class ItemDetailsComponent implements OnInit {
 	item?: Item;
 	@ViewChild('contentTextArea', {static: false}) contentTextArea: ElementRef;
-	savingState: 'Saving...' | 'Saved!';
+	@ViewChild('nameInput', {static: false}) nameInput: ElementRef;
+
+	savingState: 'Saving...' | 'Saved!' | 'Title can\'t be empty...';
 
 	debouncedUpdateContent = debounce(() => {
 		this.updateContent();
 	}, 1500, {});
+
+	debouncedUpdateName = debounce(() => {
+		this.updateName();
+	}, 1000, {});
 
 	constructor(
 		private route: ActivatedRoute,
@@ -36,9 +42,14 @@ export class ItemDetailsComponent implements OnInit {
 		this.itemService.getItem(id).subscribe(item => this.item = item);
 	}
 
-	keyUpEvent() {
+	contentKeyUpEvent() {
 		this.savingState = 'Saving...';
 		this.debouncedUpdateContent();
+	}
+
+	nameKeyUpEvent() {
+		this.savingState = 'Saving...';
+		this.debouncedUpdateName();
 	}
 
 	updateContent() {
@@ -47,6 +58,19 @@ export class ItemDetailsComponent implements OnInit {
 			this.item = updatedItem;
 			this.savingState = 'Saved!';
 		});
+	}
+
+	updateName() {
+		const nextName = this.nameInput.nativeElement.value;
+		if (nextName !== '') {
+			this.item.name = nextName;
+			this.itemService.updateItem(this.item).subscribe((updatedItem) => {
+				this.item = updatedItem;
+				this.savingState = 'Saved!';
+			});
+		} else {
+			this.savingState = 'Title can\'t be empty...';
+		}
 	}
 
 	deleteItem() {

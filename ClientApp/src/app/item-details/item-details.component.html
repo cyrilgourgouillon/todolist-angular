@@ -1,17 +1,19 @@
 <div class="container">
 	<div *ngIf="item">
+    <span class="saving-state" style="color: #777">{{savingState}}</span>
 		<div class="title-container">
-			<h1 class="title">{{item.name}} </h1>
-      <app-favorite-button [item]="item" (click)="changeCheckboxItem(item)"></app-favorite-button>
-      <app-delete-button (click)="deleteItem(item)"></app-delete-button>
-      <span class="saving-state" style="color: #777">{{savingState}}</span>
+      <input #nameInput class="name" type="text" (keyup)="nameKeyUpEvent()" value="{{item.name}}">
+      <div class="tools-container">
+        <app-delete-button (click)="deleteItem(item)"></app-delete-button>
+        <app-favorite-button [item]="item" (click)="changeCheckboxItem(item)"></app-favorite-button>
+      </div>
 		</div>
 		<app-separator></app-separator>
     <div>
 			<textarea #contentTextArea
                 class="content"
                 placeholder="Write something cool..."
-                (keyup)="keyUpEvent()" value="{{item.content}}"></textarea>
+                (keyup)="contentKeyUpEvent()" value="{{item.content}}"></textarea>
     </div>
   </div>
 </div>

@@ -20,15 +20,27 @@ input[type="checkbox"]:checked {
 .title-container {
   display: flex;
   align-items: center;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.tools-container {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
   gap: 1em;
   flex-grow: 1;
 }
 
-.title {
+.name {
   flex-grow: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  outline: none;
+  border: none;
+  width: 90%;
+  font-size: 28pt;
 }
 
 .checkbox {
@@ -39,6 +51,7 @@ input[type="checkbox"]:checked {
 .saving-state {
   flex-grow: 0;
   flex-shrink: 0;
+  text-align: right;
 }
 
 .content {
