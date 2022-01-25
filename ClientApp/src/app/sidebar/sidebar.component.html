@@ -1,6 +1,6 @@
 <div style="margin: 10px;">
   <app-title text="Add an item"></app-title>
-  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+  <form [formGroup]="formGroup" (ngSubmit)="addItem(formGroup.value)">
     <div class="input-group">
       <input type="text" formControlName="name">
       <button type="submit" class="plus-btn"><fa-icon [icon]="faPlus"></fa-icon></button>

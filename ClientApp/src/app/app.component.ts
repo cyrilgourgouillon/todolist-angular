@@ -23,6 +23,11 @@ export class AppComponent implements OnInit {
 		this.itemService.getItems().subscribe(items => this.items = items);
 	}
 
+	addItem(item: Item) {
+		this.itemService.addItem(item)
+		.subscribe(itemAdded => this.items.push(itemAdded));
+	}
+
 	deleteItem(item: Item): void {
 		this.itemService.deleteItem(item).subscribe(() => {
 			this.items.splice(this.items.indexOf(item) , 1);

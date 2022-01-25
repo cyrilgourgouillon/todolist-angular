@@ -14,7 +14,7 @@ export class SidebarComponent {
 	@Input() items: Item[];
 	@Output() deleteItemEvent = new EventEmitter<Item>();
 	@Output() changeCheckboxItemEvent = new EventEmitter<Item>();
-
+	@Output() addItemEvent = new EventEmitter<Item>();
 	formGroup: FormGroup;
 
 	faPlus = faPlus;
@@ -28,15 +28,14 @@ export class SidebarComponent {
 		});
 	}
 
-	onSubmit(formData: FormGroup): FormGroup {
-		const name = formData['name'];
+	addItem(formData: FormGroup): FormGroup {
+    const name = formData['name'];
 		if (!name) { return; }
-		this.itemService.addItem({id: this.itemService.getNextAvailableIdFrom(this.items), name: name, isChecked: false, content: ''})
-			.subscribe(item => this.items.push(item));
 
 		this.formGroup = this.formBuilder.group({
 			name: '',
 		});
+    this.addItemEvent.emit({id: this.itemService.getNextAvailableIdFrom(this.items), name: name, isChecked: false, content: ''});
 	}
 
 	deleteItem(item: Item) {
