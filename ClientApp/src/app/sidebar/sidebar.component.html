@@ -10,5 +10,5 @@
 <app-separator></app-separator>
 <div style="margin: 10px;">
   <app-title text="List of item"></app-title>
-	<app-items-table [items]="items"></app-items-table>
+	<app-items-table [items]="items" (deleteItemEvent)="deleteItem($event)" (changeCheckboxItemEvent)="changeCheckboxItem($event)"></app-items-table>
 </div>

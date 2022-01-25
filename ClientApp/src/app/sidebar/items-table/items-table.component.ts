@@ -1,7 +1,7 @@
-import { ActivatedRoute } from '@angular/router';
 import { Item } from '../../Item';
-import { Component, DoCheck, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild, Output, EventEmitter} from '@angular/core';
 import { ItemService } from 'src/app/service/item.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 enum sortType {
 	UNSORTED,
@@ -16,18 +16,18 @@ enum sortType {
 })
 export class ItemsTableComponent implements OnInit, OnChanges {
 	@Input() items?: Item[];
+	@Output() deleteItemEvent = new EventEmitter<Item>();
+	@Output() changeCheckboxItemEvent = new EventEmitter<Item>();
 
 	@ViewChild('sortButton', {static: true}) sortButtonElement: ElementRef;
 
 	private currentSort: sortType;
 
-	constructor(
-		private itemService: ItemService,
-	) {
-		this.currentSort = sortType.UNSORTED;
+	constructor() {
 	}
 
 	ngOnInit(): void {
+		this.currentSort = sortType.UNSORTED;
 		this.initSortButton();
 	}
 
@@ -98,19 +98,12 @@ export class ItemsTableComponent implements OnInit, OnChanges {
 		return (a.id > b.id) ? 1 : -1;
 	}
 
-	deleteItem(item: Item): void {
-		this.itemService.deleteItem(item).subscribe(() => {
-			this.items.splice(this.items.indexOf(item) , 1);
-			this.ngOnChanges();
-		});
+	deleteItem(item: Item) {
+		this.deleteItemEvent.emit(item);
 	}
 
-	changeCheckboxItem(item: Item): void {
-		item.isChecked = !item.isChecked;
-		this.itemService.updateItem(item).subscribe(updatedItem => {
-			this.items[this.items.indexOf(item)] = updatedItem;
-			this.ngOnChanges();
-		});
+	changeCheckboxItem(item: Item) {
+		this.changeCheckboxItemEvent.emit(item);
 	}
 
 }

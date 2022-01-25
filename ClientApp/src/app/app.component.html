@@ -1,7 +1,7 @@
 <body>
   <div class="container">
     <div class="sidebar">
-      <app-sidebar [items]="items"></app-sidebar>
+      <app-sidebar [items]="items" (deleteItemEvent)="deleteItem($event)" (changeCheckboxItemEvent)="changeCheckboxItem($event)"></app-sidebar>
     </div>
     <div class="content">
       <router-outlet></router-outlet>

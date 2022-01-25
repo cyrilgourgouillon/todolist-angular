@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class ItemService {
 
 	private itemApiUrl = 'https://localhost:5001/api/item';
+	items: Item[];
 
 	httpOptions = {
 		headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,7 +17,11 @@ export class ItemService {
 
 	constructor(
 		private http: HttpClient,
-	) { }
+	) {
+		this.getItems().subscribe((items) => {
+			this.items = items;
+		});
+	}
 
 	getItems(): Observable<Item[]> {
 		return this.http.get<Item[]>(this.itemApiUrl);

@@ -2,7 +2,8 @@
 	<div *ngIf="item">
 		<div class="title-container">
 			<h1 class="title">{{item.name}} </h1>
-			<input class="checkbox" type="checkbox" [checked]='item.isChecked'>
+      <app-favorite-button [item]="item" (click)="changeCheckboxItem(item)"></app-favorite-button>
+      <app-delete-button (click)="deleteItem(item)"></app-delete-button>
       <span class="saving-state" style="color: #777">{{savingState}}</span>
 		</div>
 		<app-separator></app-separator>

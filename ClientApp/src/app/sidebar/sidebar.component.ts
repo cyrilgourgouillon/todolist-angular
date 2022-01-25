@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Item } from '../Item';
 import { ItemService } from '../service/item.service';
@@ -12,6 +12,9 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 })
 export class SidebarComponent {
 	@Input() items: Item[];
+	@Output() deleteItemEvent = new EventEmitter<Item>();
+	@Output() changeCheckboxItemEvent = new EventEmitter<Item>();
+
 	formGroup: FormGroup;
 
 	faPlus = faPlus;
@@ -34,6 +37,14 @@ export class SidebarComponent {
 		this.formGroup = this.formBuilder.group({
 			name: '',
 		});
+	}
+
+	deleteItem(item: Item) {
+		this.deleteItemEvent.emit(item);
+	}
+
+	changeCheckboxItem(item: Item) {
+		this.changeCheckboxItemEvent.emit(item);
 	}
 
 }
