@@ -13,8 +13,11 @@ import { debounce } from 'lodash';
 export class ItemDetailsComponent implements OnInit {
 	@Input() item?: Item;
 	@ViewChild('contentTextArea', {static: false}) contentTextArea: ElementRef;
+	savingState: 'Saving...' | 'Saved!' | '';
 
-	debouncedUpdateContent = debounce(() => this.updateContent(), 1500, {});
+	debouncedUpdateContent = debounce(() => {
+		this.updateContent();
+	}, 1500, {});
 
 	constructor(
 		private route: ActivatedRoute,
@@ -31,8 +34,13 @@ export class ItemDetailsComponent implements OnInit {
 		this.itemService.getItem(id).subscribe(item => this.item = item);
 	}
 
+	keyUpEvent() {
+		this.savingState = 'Saving...';
+		this.debouncedUpdateContent();
+	}
+
 	updateContent() {
-		console.log('UPDATED');
+		this.savingState = 'Saved!';
 		this.item.content = this.contentTextArea.nativeElement.value;
 		this.itemService.updateItem(this.item).subscribe((updatedItem) => { this.item = updatedItem; });
 	}
