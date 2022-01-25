@@ -30,7 +30,7 @@ export class ItemService {
 		return this.http.post<Item>(this.itemApiUrl, item, this.httpOptions);
 	}
 
-	changeCheckboxItem(item: Item): Observable<Item> {
+	updateItem(item: Item): Observable<Item> {
 		return this.http.put<Item>(`${this.itemApiUrl}/${item.id}`, item, this.httpOptions);
 	}
 

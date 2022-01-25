@@ -1,13 +1,13 @@
 <div class="container">
-  <div *ngIf="item">
-    <div class="title-container">
-      <h1>{{item.name}} </h1>
-      <input type="checkbox" [checked]='item.isChecked'>
-    </div>
-    <p style="color: #777">Id : {{item.id}}</p>
-    <app-separator></app-separator>
-    <p>
-      <textarea #contentTextArea class="content" placeholder="Write something cool..." (keyup)="updateContent()">{{item.content}}</textarea>
-    </p>
-  </div>
+	<div *ngIf="item">
+		<div class="title-container">
+			<h1>{{item.name}} </h1>
+			<input type="checkbox" [checked]='item.isChecked'>
+		</div>
+		<p style="color: #777">Id : {{item.id}}</p>
+		<app-separator></app-separator>
+		<p>
+			<textarea #contentTextArea class="content" placeholder="Write something cool..." (keyup)="debouncedUpdateContent()">{{item.content}}</textarea>
+		</p>
+	</div>
 </div>

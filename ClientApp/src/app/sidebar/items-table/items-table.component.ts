@@ -107,7 +107,7 @@ export class ItemsTableComponent implements OnInit, OnChanges {
 
 	changeCheckboxItem(item: Item): void {
 		item.isChecked = !item.isChecked;
-		this.itemService.changeCheckboxItem(item).subscribe(updatedItem => {
+		this.itemService.updateItem(item).subscribe(updatedItem => {
 			this.items[this.items.indexOf(item)] = updatedItem;
 			this.ngOnChanges();
 		});

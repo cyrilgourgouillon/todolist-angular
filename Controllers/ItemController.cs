@@ -42,6 +42,7 @@ namespace todolist_angular.Controllers
 			var itemToPut = _itemContext.Items.Where(o => o.Id == id).FirstOrDefault();
 			itemToPut.Name = item.Name;
 			itemToPut.IsChecked = item.IsChecked;
+			itemToPut.Content = item.Content;
 			_itemContext.SaveChanges();
 			return itemToPut;
 		}

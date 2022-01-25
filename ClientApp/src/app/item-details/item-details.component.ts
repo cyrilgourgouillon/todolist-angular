@@ -1,9 +1,9 @@
 import { ItemService } from './../service/item.service';
 import { Item } from './../Item';
-import { AfterViewInit, Component, Input, OnInit, QueryList, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Location } from '@angular/common';
+import { debounce } from 'lodash';
 
 @Component({
 	selector: 'app-item-details',
@@ -13,6 +13,8 @@ import { Location } from '@angular/common';
 export class ItemDetailsComponent implements OnInit {
 	@Input() item?: Item;
 	@ViewChild('contentTextArea', {static: false}) contentTextArea: ElementRef;
+
+	private debouncedUpdateContent = debounce(() => this.updateContent(), 1500, {});
 
 	constructor(
 		private route: ActivatedRoute,
@@ -30,7 +32,9 @@ export class ItemDetailsComponent implements OnInit {
 	}
 
 	updateContent() {
-		console.log(this.contentTextArea.nativeElement.value);
+		console.log('UPDATED');
+		this.item.content = this.contentTextArea.nativeElement.value;
+		this.itemService.updateItem(this.item).subscribe((updatedItem) => { this.item = updatedItem; });
 	}
 
 }
