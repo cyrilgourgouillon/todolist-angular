@@ -6,8 +6,11 @@
 		</div>
 		<p style="color: #777">Id : {{item.id}}</p>
 		<app-separator></app-separator>
-		<p>
-			<textarea #contentTextArea class="content" placeholder="Write something cool..." (keyup)="debouncedUpdateContent()">{{item.content}}</textarea>
-		</p>
-	</div>
+    <div>
+			<textarea #contentTextArea
+                class="content"
+                placeholder="Write something cool..."
+                (keyup)="debouncedUpdateContent()" value="{{item.content}}"></textarea>
+    </div>
+  </div>
 </div>

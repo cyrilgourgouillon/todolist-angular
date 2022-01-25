@@ -1,6 +1,6 @@
 import { ItemService } from './../service/item.service';
 import { Item } from './../Item';
-import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { debounce } from 'lodash';
@@ -14,7 +14,7 @@ export class ItemDetailsComponent implements OnInit {
 	@Input() item?: Item;
 	@ViewChild('contentTextArea', {static: false}) contentTextArea: ElementRef;
 
-	private debouncedUpdateContent = debounce(() => this.updateContent(), 1500, {});
+	debouncedUpdateContent = debounce(() => this.updateContent(), 1500, {});
 
 	constructor(
 		private route: ActivatedRoute,
