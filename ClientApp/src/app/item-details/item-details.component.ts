@@ -1,7 +1,7 @@
 import { ItemService } from './../service/item.service';
 import { Item } from './../Item';
 import { Component, Input, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { debounce } from 'lodash';
 
@@ -11,7 +11,7 @@ import { debounce } from 'lodash';
 	styleUrls: ['./item-details.component.css'],
 })
 export class ItemDetailsComponent implements OnInit {
-	@Input() item?: Item;
+	item?: Item;
 	@ViewChild('contentTextArea', {static: false}) contentTextArea: ElementRef;
 	savingState: 'Saving...' | 'Saved!';
 
@@ -21,6 +21,7 @@ export class ItemDetailsComponent implements OnInit {
 
 	constructor(
 		private route: ActivatedRoute,
+		private router: Router,
 		private itemService: ItemService,
 	) { }
 
@@ -46,6 +47,16 @@ export class ItemDetailsComponent implements OnInit {
 			this.item = updatedItem;
 			this.savingState = 'Saved!';
 		});
+	}
+
+	deleteItem() {
+		this.itemService.deleteItem(this.item).subscribe(() => {
+			window.location.replace('/');
+		});
+	}
+
+	changeCheckboxItem() {
+		this.itemService.changeCheckboxItem(this.item).subscribe((item) => this.item = item);
 	}
 
 }

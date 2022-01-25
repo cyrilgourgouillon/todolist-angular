@@ -35,6 +35,11 @@ export class ItemService {
 		return this.http.post<Item>(this.itemApiUrl, item, this.httpOptions);
 	}
 
+	changeCheckboxItem(item: Item): Observable<Item> {
+		item.isChecked = !item.isChecked;
+		return this.updateItem(item);
+	}
+
 	updateItem(item: Item): Observable<Item> {
 		return this.http.put<Item>(`${this.itemApiUrl}/${item.id}`, item, this.httpOptions);
 	}
