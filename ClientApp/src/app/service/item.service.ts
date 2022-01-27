@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Item } from '../Item';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class ItemService {
-
 	private itemApiUrl = 'https://localhost:5001/api/item';
-	items: Item[];
+	private subjectItem = new Subject<any>();
+	currentItem =  this.subjectItem.asObservable();
+	private subjectItems = new Subject<any>();
+	currentItems =  this.subjectItem.asObservable();
 
 	httpOptions = {
 		headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,11 +19,7 @@ export class ItemService {
 
 	constructor(
 		private http: HttpClient,
-	) {
-		this.getItems().subscribe((items) => {
-			this.items = items;
-		});
-	}
+	) {}
 
 	getItems(): Observable<Item[]> {
 		return this.http.get<Item[]>(this.itemApiUrl);
@@ -35,14 +33,16 @@ export class ItemService {
 		return this.http.post<Item>(this.itemApiUrl, item, this.httpOptions);
 	}
 
-	changeCheckboxItem(item: Item): Observable<Item> {
+	switchCheckboxItem(item: Item): void {
 		item.isChecked = !item.isChecked;
-		return this.updateItem(item);
+		this.updateItem(item);
 	}
 
-	updateItem(item: Item): Observable<Item> {
-		this.items[this.items.indexOf(item)] = item;
-		return this.http.put<Item>(`${this.itemApiUrl}/${item.id}`, item, this.httpOptions);
+	updateItem(item: Item): void {
+		this.http.put<Item>(`${this.itemApiUrl}/${item.id}`, item, this.httpOptions).subscribe(() => {
+			this.subjectItem.next(item);
+			this.subjectItems.next();
+		});
 	}
 
 	deleteItem(item: Item): Observable<Item> {

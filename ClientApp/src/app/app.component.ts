@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Item } from './Item';
 
 import { ItemService } from './service/item.service';
@@ -16,10 +17,17 @@ export class AppComponent implements OnInit {
 	constructor(
 		private itemService: ItemService,
 		private router: Router,
-	) {
-	}
+	) {	}
 
 	ngOnInit(): void {
+		this.getItems();
+
+		this.itemService.currentItems.subscribe(() => {
+			this.getItems();
+		});
+	}
+
+	getItems(): void {
 		this.itemService.getItems().subscribe(items => this.items = items);
 	}
 
@@ -37,9 +45,6 @@ export class AppComponent implements OnInit {
 	}
 
 	changeCheckboxItem(item: Item): void {
-		item.isChecked = !item.isChecked;
-		this.itemService.updateItem(item).subscribe(updatedItem => {
-			this.items[this.items.indexOf(item)] = updatedItem;
-		});
+		this.itemService.switchCheckboxItem(item);
 	}
 }

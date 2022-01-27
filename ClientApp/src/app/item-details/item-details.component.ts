@@ -1,6 +1,6 @@
 import { ItemService } from './../service/item.service';
 import { Item } from './../Item';
-import { Component, Input, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { debounce } from 'lodash';
@@ -29,12 +29,20 @@ export class ItemDetailsComponent implements OnInit {
 		private route: ActivatedRoute,
 		private router: Router,
 		private itemService: ItemService,
-	) { }
+	) {	}
 
 	ngOnInit(): void {
 		this.savingState = 'Saved!';
+
 		this.route.params.subscribe((routeParam) => {
 			this.getItem(routeParam.id);
+		});
+
+		this.itemService.currentItem.subscribe((item) => {
+			if (this.item.id === item.id) {
+				this.getItem(this.item.id);
+				this.savingState = 'Saved!';
+			}
 		});
 	}
 
@@ -54,20 +62,14 @@ export class ItemDetailsComponent implements OnInit {
 
 	updateContent() {
 		this.item.content = this.contentTextArea.nativeElement.value;
-		this.itemService.updateItem(this.item).subscribe((updatedItem) => {
-			this.item = updatedItem;
-			this.savingState = 'Saved!';
-		});
+		this.itemService.updateItem(this.item);
 	}
 
 	updateName() {
 		const nextName = this.nameInput.nativeElement.value;
 		if (nextName !== '') {
 			this.item.name = nextName;
-			this.itemService.updateItem(this.item).subscribe((updatedItem) => {
-				this.item = updatedItem;
-				this.savingState = 'Saved!';
-			});
+			this.itemService.updateItem(this.item);
 		} else {
 			this.savingState = 'Title can\'t be empty...';
 		}
@@ -75,12 +77,12 @@ export class ItemDetailsComponent implements OnInit {
 
 	deleteItem() {
 		this.itemService.deleteItem(this.item).subscribe(() => {
-			window.location.replace('/');
+			this.router.navigateByUrl('/');
 		});
 	}
 
 	changeCheckboxItem() {
-		this.itemService.changeCheckboxItem(this.item).subscribe((item) => this.item = item);
+		this.itemService.switchCheckboxItem(this.item);
 	}
 
 }
