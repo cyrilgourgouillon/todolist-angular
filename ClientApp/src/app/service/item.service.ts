@@ -8,8 +8,10 @@ import { Observable, Subject } from 'rxjs';
 })
 export class ItemService {
 	private itemApiUrl = 'https://localhost:5001/api/item';
+
 	private subjectItem = new Subject<any>();
 	currentItem =  this.subjectItem.asObservable();
+
 	private subjectItems = new Subject<any>();
 	currentItems =  this.subjectItem.asObservable();
 

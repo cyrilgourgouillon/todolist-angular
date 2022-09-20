@@ -40,7 +40,10 @@ export class AppComponent implements OnInit {
 	deleteItem(item: Item): void {
 		this.itemService.deleteItem(item).subscribe(() => {
 			this.items.splice(this.items.indexOf(item) , 1);
-			this.router.navigateByUrl('/');
+
+			if (this.router.url === `/item/${item.id}`) {
+				this.router.navigateByUrl('/');
+			}
 		});
 	}
 
